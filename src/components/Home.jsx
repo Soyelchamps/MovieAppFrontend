@@ -21,24 +21,28 @@ const Home = () => {
       {data &&
         data.getMovies.map(
           ({ id, title, description, likes, image, date_of_released }) => (
-            <div className="mb-3 max-w-fit ml-3 cardclassName bg-indigo-900 text-white ">
-              <div className="max-w-xs p-4 ">
-                <img src={image}></img>
+            <div className="mb-3 max-w-xs ml-3 cardclassName bg-indigo-900 text-white rounded-lg">
+              <div className="max-w-xs object-fill">
+                <img className="pt-10 pb-10 pl-10 pr-10 ml-3" src={image}></img>
                 <div>
                   <a href="#">
                     <h4 className="mb-2 text-2xl  text-white">{title}</h4>
                   </a>
 
-                  <p className="text-sm mb-3 line-clamp-3">{description}</p>
+                  <p className="text-sm mb-3 mx-5 line-clamp-3">
+                    {description}
+                  </p>
                 </div>
 
-                <p className="text-sm mb-3">
-                  <spam>Created at: {date_of_released}</spam>
-                </p>
+                <div className="border-t border-b">
+                  <p className="text-sm mb-3 mt-2">
+                    <spam>Release Date: {date_of_released}</spam>
+                  </p>
 
-                <p className="mb-2 ">
-                  <spam className="text-sm">likes: {likes}</spam>
-                </p>
+                  <p className="mb-2 ">
+                    <spam className="text-sm">likes: {likes}</spam>
+                  </p>
+                </div>
                 <div data-id={id}>
                   {/**<Link
                     to="/create-note"
@@ -65,7 +69,7 @@ const Home = () => {
                         variables: { id: getDocumentId },
                       });
                     }}
-                    className="bg-indigo-600 text-white text-sm leading-6 font-medium py-2 px-3 rounded-lg"
+                    className="bg-indigo-600 text-white text-sm leading-6 font-medium py-2 px-3 mb-3 mt-3 rounded-lg"
                   >
                     Add to Favorite
                   </button>
