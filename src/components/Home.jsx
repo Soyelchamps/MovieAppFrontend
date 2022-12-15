@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { GET_MOVIES } from "../graphql/Queries";
+import { UPDATE_MOVIES } from "../graphql/Mutation";
 import { useLazyQuery, useMutation } from "@apollo/client";
 
 //import { REMOVE_NOTE } from "../graphql/Mutation";
@@ -12,6 +13,9 @@ const Home = () => {
   }, []);
 
   const [getMovies, { data, error }] = useLazyQuery(GET_MOVIES);
+  const [updateMovie] = useMutation(UPDATE_MOVIES, {
+    refetchQueries: [{ query: GET_MOVIES }],
+  });
   if (error) return <h1>Error {error}</h1>;
   if (data) {
   }
@@ -65,7 +69,7 @@ const Home = () => {
                         e.target.parentElement.getAttribute("data-id");
 
                       //Calling the remove mutation and refetching the note list
-                      return await removeNote({
+                      return await updateMovie({
                         variables: { id: getDocumentId },
                       });
                     }}

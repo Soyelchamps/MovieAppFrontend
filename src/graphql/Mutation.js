@@ -26,20 +26,15 @@ export const REMOVE_NOTE = gql`
   }
 `;
 
-export const UPDATE_NOTE = gql`
-  mutation updateNote(
-    $title: String!
-    $content: String
-    $date: String
-    $author: String
-    $id: ID
-  ) {
-    updateNote(
-      input: { title: $title, content: $content, date: $date, author: $author }
-      id: $id
-    ) {
-      id
+export const UPDATE_MOVIES = gql`
+  mutation updateMovie($likes: likes, $_id: ID) {
+    updateMovie(input: { likes: $likes }, id: $id) {
+      _id
       title
+      description
+      likes
+      image
+      date_of_released
     }
   }
 `;
