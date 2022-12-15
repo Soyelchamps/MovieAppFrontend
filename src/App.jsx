@@ -13,7 +13,7 @@ function App() {
   return (
     <Router>
       <ApolloProvider client={client}>
-        {/**   <Navbar />*/}
+        <Navbar />
         <Routes>
           <Route path="/home" element={<Home />} />
           <Route path="/create-note" element={<Form />} />
